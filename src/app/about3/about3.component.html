@@ -1,0 +1,85 @@
+<div class="flex flex row justify-center">
+<h1 class="text-6xl text-center">Corona Tracker</h1>
+<img class="img" src="assets/image/virus.png"/>
+</div> 
+<div *ngIf="(all$ |async) as all" class="flex flex-col sm:flex-row justify-around pt-10" > 
+    <div>
+    <mat-card class="card">
+        <mat-card-header class="header" >
+            INFECTED
+             <div>
+            <button mat-raised-button  class="text-sm bg-teal-300"> -------</button>
+            </div>
+        </mat-card-header>
+        <mat-card-content class="header1">
+            
+    {{all.cases}}
+</mat-card-content>
+    </mat-card>
+    </div>
+    <div>
+    <mat-card class="card">
+        <mat-card-header class="header">
+            DEATHS
+            <div>
+            <button mat-raised-button  class="text-sm bg-red-500"> -------</button>
+            </div>
+        </mat-card-header>
+        
+        <mat-card-content class="header1">
+            
+    {{all.deaths}}
+</mat-card-content>
+    </mat-card>
+    </div>
+    <div>
+    <mat-card class="card">
+        <mat-card-header class="header">
+            RECOVERED
+            <div>
+                <button mat-raised-button  class="text-sm bg-green-500"> -------</button>
+                </div>
+        </mat-card-header>
+        
+        <mat-card-content class="header1">
+            
+    {{all.recovered}}
+</mat-card-content>
+    </mat-card>
+</div>
+</div>
+<!--------->
+<div class="flex justify-center my-12 ">
+    <span class="my-12 font-bold text-4xl bg-gray-300 " >Search:</span>
+        <input  placeholder="country" class="bg-gray focus:outline-none focus:shadow-outline border border-gray-800 rounded-lg py-2 px-4  w-1/3 my-10 block  appearance-hover  leading-normal" #search>
+  
+    <!-- <mat-form-field>
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium">
+      </mat-form-field> -->
+</div>
+<!--------->
+
+<table mat-table class="mb-32" *ngIf="(country$|async) as country" [dataSource]="country">
+     <!-- <div *ngFor="let item of country">  -->
+        
+    <ng-container matColumnDef="country">
+        <th mat-header-cell *matHeaderCellDef> Country </th>
+        <td mat-cell *matCellDef="let item" class="list"> {{item.country}} </td>
+    </ng-container>
+      <ng-container matColumnDef="cases">
+        <th mat-header-cell *matHeaderCellDef> Cases </th>
+        <td mat-cell *matCellDef="let item " class="text-indigo-400 text-2xl"> {{item.cases}} </td>
+      </ng-container>
+      <ng-container matColumnDef="deaths">
+        <th mat-header-cell *matHeaderCellDef> deaths </th>
+        <td mat-cell *matCellDef="let item" class="text-red-600 text-2xl"> {{item.deaths}} </td>
+      </ng-container>
+      <ng-container matColumnDef="recovered">
+        <th mat-header-cell *matHeaderCellDef> Recovered</th>
+        <td mat-cell *matCellDef="let item " class="text-green-700 text-2xl"> {{item.recovered}} </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      <!-- </div> -->
+</table>

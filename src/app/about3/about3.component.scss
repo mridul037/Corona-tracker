@@ -1,0 +1,45 @@
+.h{
+    margin: 40px;
+    text-align: center;
+    width:300px;
+    border-radius: 8px;
+    height:20px;
+}
+.list{
+   color:grey;
+    font-size:30px;
+    
+
+}
+.img{
+    width:10%;
+    height:20%;
+}
+
+.card{
+    background-color: #323a46;
+    width:440px;
+    height:200px;
+    .header{
+        color:white;
+        font-size: 34px;
+        display: flex;
+        flex-direction: column;
+    }
+    .header1{
+        color: white;
+        font-size: 64px;
+    }
+}
+.v{
+    padding-right: 520px;
+    padding-top: 8px;
+    font-size: 24px;
+}
+.v1{
+    padding-right: 520px;
+    padding-top: 8px;
+}
+table{
+    width: 100%;
+}
